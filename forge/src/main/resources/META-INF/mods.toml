@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[45,)"
+issueTrackerURL = "https://github.com/TwmMeredydd/AtrusDoors/issues"
+license = "MIT License"
+
+[[mods]]
+modId = "atrusdoors"
+version = "${version}"
+displayName = "Atrus's Doors"
+authors = "TwmMeredydd"
+description = '''
+Adds Myst linking books to the game.
+'''
+#logoFile = ""
+
+[[dependencies.atrusdoors]]
+modId = "forge"
+mandatory = true
+versionRange = "[45,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.atrusdoors]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19.4,)"
+ordering = "NONE"
+side = "BOTH"
+
+# [[dependencies.atrusdoors]]
+# modId = "architectury"
+# mandatory = true
+# versionRange = "[8.1.79,)"
+# ordering = "AFTER"
+# side = "BOTH"

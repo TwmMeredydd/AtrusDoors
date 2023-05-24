@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "atrusdoors",
+  "version": "${version}",
+  "name": "Atrus's Doors",
+  "description": "Adds Myst linking books to the game",
+  "authors": [
+    "Me!"
+  ],
+  "contact": {
+    "homepage": "https://github.com/TwmMeredydd/AtrusDoors",
+    "sources": "https://github.com/TwmMeredydd/AtrusDoors"
+  },
+  "license": "MIT License",
+  "icon": "assets/atrusdoors/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "twmmeredydd.atrusdoors.fabric.AtrusDoorsFabric"
+    ]
+  },
+  "mixins": [
+    "atrusdoors.mixins.json",
+    "atrusdoors-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.19.4",
+    "architectury": ">=8.1.79"
+  }
+}
