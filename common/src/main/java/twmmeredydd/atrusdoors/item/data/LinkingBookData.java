@@ -7,8 +7,11 @@ import net.minecraft.nbt.FloatTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+
+import java.util.Set;
 
 import static twmmeredydd.atrusdoors.helper.NBTHelper.listTagFromArray;
 
@@ -53,5 +56,9 @@ public class LinkingBookData {
         dataTag.put("Rotation", listTagFromArray(FloatTag::valueOf, this.xRotation, this.yRotation));
         tag.put("LinkDestination", dataTag);
         return tag;
+    }
+
+    public void linkEntity(Entity entity) {
+        entity.teleportTo(entity.getServer().getLevel(dimension), x, y, z, Set.of(), yRotation, xRotation);
     }
 }

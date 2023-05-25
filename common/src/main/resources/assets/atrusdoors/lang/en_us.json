@@ -3,5 +3,7 @@
 
   "item.atrusdoors.linking_panel": "Linking Panel",
   "item.atrusdoors.unlinked_linking_book": "Unlinked Linking Book",
-  "item.atrusdoors.linking_book": "Linking Book"
+  "item.atrusdoors.linking_book": "Linking Book",
+
+  "item.atrusdoors.linking_book.link_error": "Unable to open link to destination"
 }
