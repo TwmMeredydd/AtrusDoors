@@ -1,6 +1,4 @@
-package twmmeredydd.atrusdoors.item.data;
-
-import twmmeredydd.atrusdoors.item.AtrusDoorsItem;
+package twmmeredydd.atrusdoors.item;
 
 public class LinkingBookItem extends AtrusDoorsItem {
     public LinkingBookItem(Properties properties, boolean isInTab) {

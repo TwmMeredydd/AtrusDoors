@@ -3,7 +3,6 @@ package twmmeredydd.atrusdoors.item;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import twmmeredydd.atrusdoors.AtrusDoors;
-import twmmeredydd.atrusdoors.item.data.LinkingBookItem;
 
 import java.util.LinkedHashMap;
 import java.util.function.BiConsumer;
