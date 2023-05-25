@@ -2,5 +2,6 @@
   "itemGroup.atrusdoors.main": "Atrus's Doors",
 
   "item.atrusdoors.linking_panel": "Linking Panel",
-  "item.atrusdoors.unlinked_linking_book": "Unlinked Linking Book"
+  "item.atrusdoors.unlinked_linking_book": "Unlinked Linking Book",
+  "item.atrusdoors.linking_book": "Linking Book"
 }
