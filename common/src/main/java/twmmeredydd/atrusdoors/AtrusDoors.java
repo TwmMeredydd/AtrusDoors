@@ -17,7 +17,7 @@ public class AtrusDoors {
     public static <T extends CreativeModeTab.Builder> CreativeModeTab.Builder buildItemGroup(T builder) {
         return builder
                 .title(Component.translatable("itemGroup." + MOD_ID + ".main"))
-                .icon(() -> ItemStack.EMPTY)
+                .icon(() -> new ItemStack(AtrusDoorsItems.LINKING_BOOK))
                 .displayItems((itemDisplayParameters, output) -> AtrusDoorsItems.ITEMS.values().forEach(t -> {
                     if (((CreativeTabMember)t).isInTab()) {
                         output.accept(t);
