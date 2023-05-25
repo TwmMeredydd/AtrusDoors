@@ -12,26 +12,26 @@ import net.minecraftforge.registries.RegisterEvent;
 import twmmeredydd.atrusdoors.AtrusDoors;
 import twmmeredydd.atrusdoors.item.AtrusDoorsItems;
 
-import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 @Mod(AtrusDoors.MOD_ID)
 public class AtrusDoorsForge {
-    private final IEventBus bus;
 
     public AtrusDoorsForge() {
-        bus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        register(Registries.ITEM, AtrusDoorsItems.ITEMS);
+        register(Registries.ITEM, resourceLocationBiConsumer -> AtrusDoorsItems.consume(resourceLocationBiConsumer));
         registerItemGroup();
     }
 
-    public <T> void register(ResourceKey<Registry<T>> registry, Map<ResourceLocation, T> map) {
-        bus.addListener((RegisterEvent event) -> map.forEach((r, t) -> event.register(registry, r, () -> t)));
+    public static IEventBus getBus() {
+        return FMLJavaModLoadingContext.get().getModEventBus();
     }
 
-    //Replace with custom class provider which other registries can easily be added to or something.
+    public static <T> void register(ResourceKey<Registry<T>> registry, Consumer<BiConsumer<ResourceLocation, ? super T>> consumer) {
+        getBus().addListener((RegisterEvent event) -> event.register(registry, helper -> consumer.accept(helper::register)));
+    }
 
-    public void registerItemGroup() {
-        bus.addListener((CreativeModeTabEvent.Register event) -> event.registerCreativeModeTab(AtrusDoors.id("main"), AtrusDoors::buildItemGroup));
+    public static void registerItemGroup() {
+        getBus().addListener((CreativeModeTabEvent.Register event) -> event.registerCreativeModeTab(AtrusDoors.id("main"), AtrusDoors::buildItemGroup));
     }
 }

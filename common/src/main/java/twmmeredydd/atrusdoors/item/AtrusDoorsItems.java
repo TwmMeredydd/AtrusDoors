@@ -5,6 +5,7 @@ import net.minecraft.world.item.Item;
 import twmmeredydd.atrusdoors.AtrusDoors;
 
 import java.util.LinkedHashMap;
+import java.util.function.BiConsumer;
 
 public class AtrusDoorsItems {
     public static final LinkedHashMap<ResourceLocation, Item> ITEMS = new LinkedHashMap<>();
@@ -14,5 +15,9 @@ public class AtrusDoorsItems {
             throw new IllegalArgumentException("Attempted duplicate registry for item " + AtrusDoors.id(name));
         }
         return item;
+    }
+
+    public static void consume(BiConsumer<ResourceLocation, ? super Item> consumer) {
+        ITEMS.forEach(consumer);
     }
 }
