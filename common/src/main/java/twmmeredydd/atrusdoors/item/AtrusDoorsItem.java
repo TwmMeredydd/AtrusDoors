@@ -2,14 +2,15 @@ package twmmeredydd.atrusdoors.item;
 
 import net.minecraft.world.item.Item;
 
-public class AtrusDoorsItem extends Item {
-    private final boolean isInGroup;
-    public AtrusDoorsItem(Properties properties, boolean isInGroup) {
+public class AtrusDoorsItem extends Item implements CreativeTabMember {
+    private final boolean isInTab;
+    public AtrusDoorsItem(Properties properties, boolean isInTab) {
         super(properties);
-        this.isInGroup = isInGroup;
+        this.isInTab = isInTab;
     }
 
-    public boolean isInGroup() {
-        return isInGroup;
+    @Override
+    public boolean isInTab() {
+        return isInTab;
     }
 }
