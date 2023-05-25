@@ -1,1 +1,2 @@
 accessWidener   v2  named
+accessible method net/minecraft/world/item/CreativeModeTab$Output accept (Lnet/minecraft/world/level/ItemLike;)V
