@@ -23,10 +23,11 @@ public class LinkingBookItem extends Item {
         }
 
         player.awardStat(Stats.ITEM_USED.get(this));
-        LinkingBookData data = LinkingBookData.deserializeNBT(book.getTag());
 
-        if (level.getServer().getLevel(data.dimension) == null) {
-            player.displayClientMessage(Component.translatable("item.atrusdoors.linking_book.link_error"), true);
+        LinkingBookData data = LinkingBookData.deserializeNBT(book.getOrCreateTag());
+
+        if (!data.isValid(level)) {
+            player.displayClientMessage(Component.translatable("item.atrusdoors.linking_book.invalid_link"), true);
             return InteractionResultHolder.fail(book);
         }
 

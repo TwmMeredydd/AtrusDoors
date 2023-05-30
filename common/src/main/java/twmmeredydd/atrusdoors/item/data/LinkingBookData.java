@@ -1,5 +1,6 @@
 package twmmeredydd.atrusdoors.item.data;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.DoubleTag;
@@ -35,6 +36,7 @@ public class LinkingBookData {
         LinkingBookData data = new LinkingBookData();
 
         CompoundTag dataTag = tag.getCompound("LinkDestination");
+
         data.dimension = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(dataTag.getString("Dimension")));
 
         ListTag pos = dataTag.getList("Pos", 6);
@@ -56,6 +58,12 @@ public class LinkingBookData {
         dataTag.put("Rotation", listTagFromArray(FloatTag::valueOf, this.xRotation, this.yRotation));
         tag.put("LinkDestination", dataTag);
         return tag;
+    }
+
+    public boolean isValid(Level level) {
+        Level toLevel = level.getServer().getLevel(dimension);
+        if (toLevel == null) return false;
+        return toLevel.isInWorldBounds(new BlockPos((int) x, (int) y, (int) z));
     }
 
     public void linkEntity(Entity entity) {
