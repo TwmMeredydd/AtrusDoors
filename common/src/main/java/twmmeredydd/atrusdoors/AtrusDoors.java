@@ -5,7 +5,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import twmmeredydd.atrusdoors.item.AtrusDoorsItems;
-import twmmeredydd.atrusdoors.item.CreativeTabMember;
 
 public class AtrusDoors {
     public static final String MOD_ID = "atrusdoors";
@@ -18,11 +17,7 @@ public class AtrusDoors {
         return builder
                 .title(Component.translatable("itemGroup." + MOD_ID + ".main"))
                 .icon(() -> new ItemStack(AtrusDoorsItems.LINKING_BOOK))
-                .displayItems((itemDisplayParameters, output) -> AtrusDoorsItems.ITEMS.values().forEach(t -> {
-                    if (((CreativeTabMember)t).isInTab()) {
-                        output.accept(t);
-                    }
-                }));
+                .displayItems((itemDisplayParameters, output) -> AtrusDoorsItems.TAB_CONTENTS.forEach(output::accept));
     }
 
 }
