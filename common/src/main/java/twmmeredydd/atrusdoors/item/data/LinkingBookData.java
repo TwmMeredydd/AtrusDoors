@@ -16,9 +16,9 @@ import java.util.Set;
 import static twmmeredydd.atrusdoors.helper.NBTHelper.listTagFromArray;
 
 public class LinkingBookData {
-    public ResourceKey<Level> dimension;
-    public double x, y, z;
-    public float xRotation, yRotation;
+    private ResourceKey<Level> dimension;
+    private double x, y, z;
+    private float xRotation, yRotation;
 
     public static LinkingBookData fromEntity(LivingEntity entity) {
         LinkingBookData data = new LinkingBookData();
