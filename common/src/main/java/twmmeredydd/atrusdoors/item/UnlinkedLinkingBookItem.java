@@ -25,7 +25,7 @@ public class UnlinkedLinkingBookItem extends Item {
 
         player.awardStat(Stats.ITEM_USED.get(this));
         ItemStack linkedBook = new ItemStack(AtrusDoorsItems.LINKING_BOOK);
-        LinkingBookData.fromPlayer(player).serializeNBT(linkedBook.getOrCreateTag());
+        LinkingBookData.fromEntity(player).serializeNBT(linkedBook.getOrCreateTag());
 
         if (stackInHand.isEmpty()) {
             return InteractionResultHolder.consume(linkedBook);

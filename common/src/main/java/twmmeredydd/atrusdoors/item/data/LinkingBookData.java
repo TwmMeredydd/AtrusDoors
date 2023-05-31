@@ -8,8 +8,7 @@ import net.minecraft.nbt.FloatTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
 import java.util.Set;
@@ -21,14 +20,14 @@ public class LinkingBookData {
     public double x, y, z;
     public float xRotation, yRotation;
 
-    public static LinkingBookData fromPlayer(Player player) {
+    public static LinkingBookData fromEntity(LivingEntity entity) {
         LinkingBookData data = new LinkingBookData();
-        data.dimension = player.level.dimension();
-        data.x = player.getX();
-        data.y = player.getY();
-        data.z = player.getZ();
-        data.xRotation = player.getXRot();
-        data.yRotation = player.getYHeadRot();
+        data.dimension = entity.level.dimension();
+        data.x = entity.getX();
+        data.y = entity.getY();
+        data.z = entity.getZ();
+        data.xRotation = entity.getXRot();
+        data.yRotation = entity.getYHeadRot();
         return data;
     }
 
@@ -66,7 +65,7 @@ public class LinkingBookData {
         return toLevel.isInWorldBounds(new BlockPos((int) x, (int) y, (int) z));
     }
 
-    public void linkEntity(Entity entity) {
+    public void linkEntity(LivingEntity entity) {
         entity.teleportTo(entity.getServer().getLevel(dimension), x, y, z, Set.of(), yRotation, xRotation);
     }
 }
