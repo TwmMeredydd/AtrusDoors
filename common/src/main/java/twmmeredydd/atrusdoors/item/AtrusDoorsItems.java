@@ -26,7 +26,7 @@ public class AtrusDoorsItems {
         return item;
     }
 
-    public static void consume(BiConsumer<ResourceLocation, ? super Item> consumer) {
+    public static void register(BiConsumer<ResourceLocation, ? super Item> consumer) {
         ITEMS.forEach(consumer);
     }
 }

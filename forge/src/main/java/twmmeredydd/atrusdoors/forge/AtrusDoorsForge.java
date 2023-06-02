@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 public class AtrusDoorsForge {
 
     public AtrusDoorsForge() {
-        register(Registries.ITEM, AtrusDoorsItems::consume);
+        register(Registries.ITEM, AtrusDoorsItems::register);
         registerItemGroup();
     }
 
