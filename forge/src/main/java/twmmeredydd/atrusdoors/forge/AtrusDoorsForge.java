@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 public class AtrusDoorsForge {
 
     public AtrusDoorsForge() {
-        register(Registries.ITEM, resourceLocationBiConsumer -> AtrusDoorsItems.consume(resourceLocationBiConsumer));
+        register(Registries.ITEM, AtrusDoorsItems::consume);
         registerItemGroup();
     }
 
@@ -27,7 +27,7 @@ public class AtrusDoorsForge {
         return FMLJavaModLoadingContext.get().getModEventBus();
     }
 
-    public static <T> void register(ResourceKey<Registry<T>> registry, Consumer<BiConsumer<ResourceLocation, ? super T>> consumer) {
+    public static <T> void register(ResourceKey<Registry<T>> registry, Consumer<BiConsumer<ResourceLocation, T>> consumer) {
         getBus().addListener((RegisterEvent event) -> event.register(registry, helper -> consumer.accept(helper::register)));
     }
 
