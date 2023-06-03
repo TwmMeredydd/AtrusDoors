@@ -5,5 +5,7 @@
   "item.atrusdoors.unlinked_linking_book": "Unlinked Linking Book",
   "item.atrusdoors.linking_book": "Linking Book",
 
-  "item.atrusdoors.linking_book.invalid_link": "This book does not contain a valid link"
+  "item.atrusdoors.linking_book.invalid_link": "This book does not contain a valid link",
+
+  "entity.atrusdoors.linking_book": "Linking Book"
 }

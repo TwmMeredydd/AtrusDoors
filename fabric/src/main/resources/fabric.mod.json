@@ -17,6 +17,9 @@
   "entrypoints": {
     "main": [
       "twmmeredydd.atrusdoors.fabric.AtrusDoorsFabric"
+    ],
+    "client": [
+      "twmmeredydd.atrusdoors.fabric.client.AtrusDoorsFabricClient"
     ]
   },
   "mixins": [

@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.RegisterEvent;
 import twmmeredydd.atrusdoors.AtrusDoors;
+import twmmeredydd.atrusdoors.entity.AtrusDoorsEntityTypes;
 import twmmeredydd.atrusdoors.item.AtrusDoorsItems;
 
 import java.util.function.BiConsumer;
@@ -20,6 +21,7 @@ public class AtrusDoorsForge {
 
     public AtrusDoorsForge() {
         register(Registries.ITEM, AtrusDoorsItems::register);
+        register(Registries.ENTITY_TYPE, AtrusDoorsEntityTypes::register);
         registerItemGroup();
     }
 
