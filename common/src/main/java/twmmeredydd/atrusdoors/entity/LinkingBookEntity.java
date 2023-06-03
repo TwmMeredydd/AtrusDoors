@@ -1,6 +1,7 @@
 package twmmeredydd.atrusdoors.entity;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -20,7 +21,6 @@ import twmmeredydd.atrusdoors.item.data.LinkingBookData;
 public class LinkingBookEntity extends Entity {
 
     private static final EntityDataAccessor<CompoundTag> LINK_ACCESSOR = SynchedEntityData.defineId(LinkingBookEntity.class, EntityDataSerializers.COMPOUND_TAG);
-    private LinkingBookData linkData;
 
     public LinkingBookEntity(EntityType<?> entityType, Level level) {
         super(entityType, level);
@@ -29,7 +29,7 @@ public class LinkingBookEntity extends Entity {
     @Override
     public InteractionResult interact(Player player, InteractionHand interactionHand) {
         if (this.level.isClientSide) {
-            return InteractionResult.PASS;
+            return InteractionResult.SUCCESS;
         }
 
         if (player.isCrouching()) {
@@ -38,10 +38,18 @@ public class LinkingBookEntity extends Entity {
                 player.drop(stack, false);
             }
             this.remove(RemovalReason.DISCARDED);
+            return InteractionResult.SUCCESS;
         }
 
+        LinkingBookData data = this.getLinkData();
 
-        return super.interact(player, interactionHand);
+        if (!LinkingBookData.isValid(data, player.getLevel())) {
+            player.displayClientMessage(Component.translatable("item.atrusdoors.linking_book.invalid_link"), true);
+            return InteractionResult.FAIL;
+        }
+
+        data.linkEntity(player);
+        return InteractionResult.SUCCESS;
     }
 
     @Override

@@ -36,7 +36,7 @@ public class LinkingBookItem extends Item {
 
             LinkingBookData data = LinkingBookData.deserializeNBT(book.getOrCreateTag());
 
-            if (!data.isValid(level)) {
+            if (!LinkingBookData.isValid(data, level)) {
                 player.displayClientMessage(Component.translatable("item.atrusdoors.linking_book.invalid_link"), true);
                 return InteractionResultHolder.fail(book);
             }

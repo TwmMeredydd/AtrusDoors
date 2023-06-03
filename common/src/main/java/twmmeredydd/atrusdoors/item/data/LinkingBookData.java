@@ -59,10 +59,11 @@ public class LinkingBookData {
         return tag;
     }
 
-    public boolean isValid(Level level) {
-        Level toLevel = level.getServer().getLevel(dimension);
+    public static boolean isValid(LinkingBookData data, Level level) {
+        if (data == null) return false;
+        Level toLevel = level.getServer().getLevel(data.dimension);
         if (toLevel == null) return false;
-        return toLevel.isInWorldBounds(new BlockPos((int) x, (int) y, (int) z));
+        return toLevel.isInWorldBounds(new BlockPos((int) data.x, (int) data.y, (int) data.z));
     }
 
     public void linkEntity(LivingEntity entity) {
