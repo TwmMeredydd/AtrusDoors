@@ -2,6 +2,7 @@ package twmmeredydd.atrusdoors.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -30,6 +31,7 @@ public class LinkingBookRenderer extends EntityRenderer<LinkingBookEntity> {
         poseStack.pushPose();
         poseStack.scale(-1.0f, -1.0f, 1.0f);
         poseStack.translate(0, -1.501, 0);
+        poseStack.mulPose(Axis.YP.rotationDegrees(entity.getYRot()));
         VertexConsumer vertexConsumer = multiBufferSource.getBuffer(this.model.renderType(getTextureLocation(entity)));
         this.model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
         poseStack.popPose();
