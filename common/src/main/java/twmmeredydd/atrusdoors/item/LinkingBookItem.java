@@ -41,7 +41,13 @@ public class LinkingBookItem extends Item {
                 return InteractionResultHolder.fail(book);
             }
 
+            if (!player.getAbilities().instabuild) {
+                spawnAsEntity(level, new Vec3(player.getX(), player.getY(), player.getZ()), book, player.getYHeadRot());
+                book.shrink(1);
+            }
+
             data.linkEntity(player);
+
             return InteractionResultHolder.success(book);
         }
 
@@ -62,13 +68,7 @@ public class LinkingBookItem extends Item {
 
                 Vec3 spawnPos = Vec3.atLowerCornerWithOffset(clickedBlock.getCollisionShape(level, clickedPos).isEmpty() ? clickedPos : clickedPos.relative(clickedFace), 0.5, 0 ,0.5);
 
-                LinkingBookEntity entity = new LinkingBookEntity(AtrusDoorsEntityTypes.LINKING_BOOK, level);
-                entity.setPos(spawnPos);
-                entity.setLinkData(LinkingBookData.deserializeNBT(inHand.getOrCreateTag()));
-                entity.setYRot(player.getYHeadRot());
-
-                level.gameEvent(entity, GameEvent.ENTITY_PLACE, spawnPos);
-                level.addFreshEntity(entity);
+                spawnAsEntity(level, spawnPos, inHand, player.getYHeadRot());
                 inHand.shrink(1);
             }
 
@@ -76,5 +76,15 @@ public class LinkingBookItem extends Item {
         } else {
             return InteractionResult.PASS;
         }
+    }
+
+    public static void spawnAsEntity(Level level, Vec3 pos, ItemStack stack, float yRot) {
+        LinkingBookEntity entity = new LinkingBookEntity(AtrusDoorsEntityTypes.LINKING_BOOK, level);
+        entity.setPos(pos);
+        entity.setLinkData(LinkingBookData.deserializeNBT(stack.getOrCreateTag()));
+        entity.setYRot(yRot);
+
+        level.gameEvent(entity, GameEvent.ENTITY_PLACE, pos);
+        level.addFreshEntity(entity);
     }
 }
