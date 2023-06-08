@@ -31,8 +31,8 @@ public class LinkingBookModel extends EntityModel<LinkingBookEntity> {
     public static LayerDefinition createBodyLayer() {
         MeshDefinition meshDefinition = new MeshDefinition();
         PartDefinition partDefinition = meshDefinition.getRoot();
-        partDefinition.addOrReplaceChild("top_cover", CubeListBuilder.create().texOffs(0, 9).addBox(0.0F, -0.01F, -4.5F, 6.0F, 0.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 22.0F, 0.0F));
-        partDefinition.addOrReplaceChild("bottom_cover", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, -4.5F, 6.0F, 0.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+        partDefinition.addOrReplaceChild("top_cover", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, -0.01F, -4.5F, 6.0F, 0.0F, 9.0F, new CubeDeformation(0.0F)).texOffs(12, 0).addBox(0.0F, -0.005F, -4.5F, 6.0F, 0.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 22.0F, 0.0F));
+        partDefinition.addOrReplaceChild("bottom_cover", CubeListBuilder.create().texOffs(0, 9).addBox(0.0F, 0.0F, -4.5F, 6.0F, 0.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
         partDefinition.addOrReplaceChild("spine", CubeListBuilder.create().texOffs(0, 11).addBox(0.0F, -2.01F, -4.5F, 0.0F, 2.0F, 9.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
         partDefinition.addOrReplaceChild("pages", CubeListBuilder.create().texOffs(14, 11).addBox(0.005F, -2.005F, -3.5F, 5.0F, 2.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
