@@ -42,8 +42,7 @@ public class LinkingBookModel extends EntityModel<LinkingBookEntity> {
 
     @Override
     public void setupAnim(LinkingBookEntity entity, float f, float g, float h, float i, float j) {
-        //this.topCover.zRot = -Mth.sin(f * Mth.PI / 2) * Mth.PI;
-        this.topCover.zRot = -f * Mth.PI;
+        this.topCover.zRot = -f * 2 * Mth.PI * 170 / 360;
     }
 
     @Override
