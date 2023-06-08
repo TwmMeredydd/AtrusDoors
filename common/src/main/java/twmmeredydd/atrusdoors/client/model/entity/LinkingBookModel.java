@@ -8,6 +8,7 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.util.Mth;
 import twmmeredydd.atrusdoors.AtrusDoors;
 import twmmeredydd.atrusdoors.entity.LinkingBookEntity;
 
@@ -41,7 +42,8 @@ public class LinkingBookModel extends EntityModel<LinkingBookEntity> {
 
     @Override
     public void setupAnim(LinkingBookEntity entity, float f, float g, float h, float i, float j) {
-
+        //this.topCover.zRot = -Mth.sin(f * Mth.PI / 2) * Mth.PI;
+        this.topCover.zRot = -f * Mth.PI;
     }
 
     @Override

@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -21,6 +22,8 @@ import twmmeredydd.atrusdoors.item.data.LinkingBookData;
 public class LinkingBookEntity extends Entity {
 
     private static final EntityDataAccessor<CompoundTag> LINK_ACCESSOR = SynchedEntityData.defineId(LinkingBookEntity.class, EntityDataSerializers.COMPOUND_TAG);
+    public float lastTickAnimProgress;
+    public float animProgress;
 
     public LinkingBookEntity(EntityType<?> entityType, Level level) {
         super(entityType, level);
@@ -50,6 +53,15 @@ public class LinkingBookEntity extends Entity {
 
         data.linkEntity(player);
         return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        Player player = this.level.getNearestPlayer(this, 3);
+        this.lastTickAnimProgress = this.animProgress;
+        this.animProgress = Mth.clamp(this.animProgress + (player != null ? 0.1F : -0.1F), 0.0F, 1.0F);
     }
 
     @Override

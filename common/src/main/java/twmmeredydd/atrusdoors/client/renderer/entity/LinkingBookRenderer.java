@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import twmmeredydd.atrusdoors.AtrusDoors;
 import twmmeredydd.atrusdoors.client.model.entity.LinkingBookModel;
 import twmmeredydd.atrusdoors.entity.LinkingBookEntity;
@@ -32,6 +33,7 @@ public class LinkingBookRenderer extends EntityRenderer<LinkingBookEntity> {
         poseStack.scale(-1.0f, -1.0f, 1.0f);
         poseStack.translate(0, -1.501, 0);
         poseStack.mulPose(Axis.YP.rotationDegrees(entity.getYRot()));
+        this.model.setupAnim(entity, Mth.lerp(g, entity.lastTickAnimProgress, entity.animProgress), 0,0,0,0);
         VertexConsumer vertexConsumer = multiBufferSource.getBuffer(this.model.renderType(getTextureLocation(entity)));
         this.model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
         poseStack.popPose();
