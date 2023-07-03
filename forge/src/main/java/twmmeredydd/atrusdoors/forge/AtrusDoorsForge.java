@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.RegisterEvent;
 import twmmeredydd.atrusdoors.AtrusDoors;
+import twmmeredydd.atrusdoors.block.AtrusDoorsBlocks;
 import twmmeredydd.atrusdoors.entity.AtrusDoorsEntityTypes;
 import twmmeredydd.atrusdoors.item.AtrusDoorsItems;
 
@@ -22,6 +23,7 @@ public class AtrusDoorsForge {
 
     public AtrusDoorsForge() {
         // IDK why, but replacing the lambda with a map::forEach reference causes a frozen registry error
+        register(Registries.BLOCK, consumer -> AtrusDoorsBlocks.BLOCKS.forEach(consumer));
         register(Registries.ITEM, consumer -> AtrusDoorsItems.ITEMS.forEach(consumer));
         register(Registries.ENTITY_TYPE, consumer -> AtrusDoorsEntityTypes.ENTITY_TYPES.forEach(consumer));
         registerItemGroup();

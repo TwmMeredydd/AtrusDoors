@@ -7,6 +7,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import twmmeredydd.atrusdoors.AtrusDoors;
+import twmmeredydd.atrusdoors.block.AtrusDoorsBlocks;
 import twmmeredydd.atrusdoors.entity.AtrusDoorsEntityTypes;
 import twmmeredydd.atrusdoors.item.AtrusDoorsItems;
 
@@ -18,6 +19,7 @@ public class AtrusDoorsFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        register(BuiltInRegistries.BLOCK, AtrusDoorsBlocks.BLOCKS);
         register(BuiltInRegistries.ITEM, AtrusDoorsItems.ITEMS);
         register(BuiltInRegistries.ENTITY_TYPE, AtrusDoorsEntityTypes.ENTITY_TYPES);
     }
