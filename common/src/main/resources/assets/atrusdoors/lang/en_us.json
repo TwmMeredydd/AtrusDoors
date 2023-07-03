@@ -7,5 +7,7 @@
 
   "item.atrusdoors.linking_book.invalid_link": "This book does not contain a valid link",
 
+  "block.atrusdoors.oak_bookstand": "Oak Bookstand",
+
   "entity.atrusdoors.linking_book": "Linking Book"
 }
