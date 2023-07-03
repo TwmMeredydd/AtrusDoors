@@ -16,6 +16,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+import twmmeredydd.atrusdoors.block.entity.BookstandBlockEntity;
 
 public class BookStandBlock extends BaseEntityBlock {
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
@@ -52,6 +53,6 @@ public class BookStandBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return null;
+        return new BookstandBlockEntity(blockPos, blockState);
     }
 }

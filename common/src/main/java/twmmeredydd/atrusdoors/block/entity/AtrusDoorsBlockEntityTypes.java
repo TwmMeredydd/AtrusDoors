@@ -4,11 +4,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import twmmeredydd.atrusdoors.AtrusDoors;
+import twmmeredydd.atrusdoors.block.AtrusDoorsBlocks;
 
 import java.util.LinkedHashMap;
 
 public class AtrusDoorsBlockEntityTypes {
     public static final LinkedHashMap<ResourceLocation, BlockEntityType<?>> BLOCK_ENTITY_TYPES = new LinkedHashMap<>();
+
+    public static final BlockEntityType<BookstandBlockEntity> BOOKSTAND = create("bookstand", BlockEntityType.Builder.of(BookstandBlockEntity::new, AtrusDoorsBlocks.OAK_BOOKSTAND));
 
     public static <T extends BlockEntity> BlockEntityType<T> create(String name, BlockEntityType.Builder<T> builder) {
         ResourceLocation id = AtrusDoors.id(name);
