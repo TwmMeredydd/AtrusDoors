@@ -27,8 +27,4 @@ public class AtrusDoorsEntityTypes {
 
         return type;
     }
-
-    public static void register(BiConsumer<ResourceLocation, ? super EntityType<?>> consumer) {
-        ENTITY_TYPES.forEach(consumer);
-    }
 }

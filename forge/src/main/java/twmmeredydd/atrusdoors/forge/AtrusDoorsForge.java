@@ -13,6 +13,7 @@ import twmmeredydd.atrusdoors.AtrusDoors;
 import twmmeredydd.atrusdoors.entity.AtrusDoorsEntityTypes;
 import twmmeredydd.atrusdoors.item.AtrusDoorsItems;
 
+import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
@@ -20,8 +21,9 @@ import java.util.function.Consumer;
 public class AtrusDoorsForge {
 
     public AtrusDoorsForge() {
-        register(Registries.ITEM, AtrusDoorsItems::register);
-        register(Registries.ENTITY_TYPE, AtrusDoorsEntityTypes::register);
+        // IDK why, but replacing the lambda with a map::forEach reference causes a frozen registry error
+        register(Registries.ITEM, consumer -> AtrusDoorsItems.ITEMS.forEach(consumer));
+        register(Registries.ENTITY_TYPE, consumer -> AtrusDoorsEntityTypes.ENTITY_TYPES.forEach(consumer));
         registerItemGroup();
     }
 
@@ -29,9 +31,14 @@ public class AtrusDoorsForge {
         return FMLJavaModLoadingContext.get().getModEventBus();
     }
 
-    public static <T> void register(ResourceKey<Registry<T>> registry, Consumer<BiConsumer<ResourceLocation, T>> consumer) {
+    public <T> void register(ResourceKey<Registry<T>> registry, Consumer<BiConsumer<ResourceLocation, T>> consumer) {
         getBus().addListener((RegisterEvent event) -> event.register(registry, helper -> consumer.accept(helper::register)));
     }
+
+//    Also don't know why this causes a registry frozen error, but not when the map is extracted to a consumer function.
+//    public <T> void register(ResourceKey<Registry<T>> registry, Map<ResourceLocation, T> map) {
+//        getBus().addListener((RegisterEvent event) -> event.register(registry, helper -> map.forEach(helper::register)));
+//    }
 
     public static void registerItemGroup() {
         getBus().addListener((CreativeModeTabEvent.Register event) -> event.registerCreativeModeTab(AtrusDoors.id("main"), AtrusDoors::buildItemGroup));
