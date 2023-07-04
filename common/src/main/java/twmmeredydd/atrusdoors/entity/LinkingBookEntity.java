@@ -22,7 +22,7 @@ import twmmeredydd.atrusdoors.item.data.LinkingBookData;
 public class LinkingBookEntity extends Entity {
 
     private static final EntityDataAccessor<CompoundTag> LINK_ACCESSOR = SynchedEntityData.defineId(LinkingBookEntity.class, EntityDataSerializers.COMPOUND_TAG);
-    private static final float ANIM_STEP = 0.1F;
+    public static final float ANIM_STEP = 0.1F;
 
     public float lastTickAnimProgress;
     public float animProgress;

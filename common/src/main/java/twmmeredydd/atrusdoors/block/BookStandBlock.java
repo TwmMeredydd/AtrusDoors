@@ -3,10 +3,13 @@ package twmmeredydd.atrusdoors.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -17,6 +20,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+import twmmeredydd.atrusdoors.block.entity.AtrusDoorsBlockEntityTypes;
 import twmmeredydd.atrusdoors.block.entity.BookstandBlockEntity;
 
 public class BookStandBlock extends BaseEntityBlock {
@@ -25,6 +29,7 @@ public class BookStandBlock extends BaseEntityBlock {
 
     public static final VoxelShape BASE = Block.box(4.0, 0.0, 4.0, 12.0, 1.0, 12.0);
     public static final VoxelShape COLUMN = Block.box(7.0,1.0, 7.0, 9.0, 7.0, 9.0);
+    public static final VoxelShape HOLDER = Block.box(3.5, 3.5, 3.5, 12.5, 11, 12.5);
 
     public BookStandBlock(Properties properties) {
         super(properties);
@@ -36,7 +41,7 @@ public class BookStandBlock extends BaseEntityBlock {
 
     @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        return Shapes.or(BASE, COLUMN);
+        return Shapes.or(BASE, COLUMN, HOLDER);
     }
 
     @Nullable
@@ -59,5 +64,11 @@ public class BookStandBlock extends BaseEntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new BookstandBlockEntity(blockPos, blockState);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
+        return level.isClientSide ? createTickerHelper(blockEntityType, AtrusDoorsBlockEntityTypes.BOOKSTAND, BookstandBlockEntity::animationTick) : null;
     }
 }
