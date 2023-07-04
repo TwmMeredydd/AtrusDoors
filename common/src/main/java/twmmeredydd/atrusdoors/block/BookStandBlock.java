@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -20,13 +21,17 @@ import twmmeredydd.atrusdoors.block.entity.BookstandBlockEntity;
 
 public class BookStandBlock extends BaseEntityBlock {
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
+    public static final BooleanProperty HAS_BOOK = BlockStateProperties.HAS_BOOK;
 
     public static final VoxelShape BASE = Block.box(4.0, 0.0, 4.0, 12.0, 1.0, 12.0);
     public static final VoxelShape COLUMN = Block.box(7.0,1.0, 7.0, 9.0, 7.0, 9.0);
 
     public BookStandBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(ROTATION, 0));
+        this.registerDefaultState(this.getStateDefinition().any()
+                .setValue(ROTATION, 0)
+                .setValue(HAS_BOOK, false)
+        );
     }
 
     @Override
@@ -42,7 +47,7 @@ public class BookStandBlock extends BaseEntityBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(ROTATION);
+        builder.add(ROTATION, HAS_BOOK);
     }
 
     @Override
