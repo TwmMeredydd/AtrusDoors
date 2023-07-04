@@ -15,9 +15,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
+import twmmeredydd.atrusdoors.block.BookStandBlock;
+import twmmeredydd.atrusdoors.block.entity.BookstandBlockEntity;
 import twmmeredydd.atrusdoors.entity.AtrusDoorsEntityTypes;
 import twmmeredydd.atrusdoors.entity.LinkingBookEntity;
 import twmmeredydd.atrusdoors.item.data.LinkingBookData;
+import twmmeredydd.atrusdoors.tag.AtrusDoorsTags;
 
 public class LinkingBookItem extends Item {
     public LinkingBookItem(Properties properties) {
@@ -31,7 +34,7 @@ public class LinkingBookItem extends Item {
             return InteractionResultHolder.success(book);
         }
 
-        if (!player.isCrouching()){
+        if (!player.isCrouching()) {
             player.awardStat(Stats.ITEM_USED.get(this));
 
             LinkingBookData data = LinkingBookData.deserializeNBT(book.getOrCreateTag());
@@ -58,13 +61,26 @@ public class LinkingBookItem extends Item {
     public InteractionResult useOn(UseOnContext useOnContext) {
         Level level = useOnContext.getLevel();
         Player player = useOnContext.getPlayer();
+        BlockPos clickedPos = useOnContext.getClickedPos();
+        BlockState clickedBlock = level.getBlockState(clickedPos);
+        ItemStack inHand = useOnContext.getItemInHand();
+
+        if (clickedBlock.is(AtrusDoorsTags.BOOKSTANDS)) {
+            if (!clickedBlock.getValue(BookStandBlock.HAS_BOOK)) {
+                if (!level.isClientSide) {
+                    BookstandBlockEntity entity = (BookstandBlockEntity) level.getBlockEntity(clickedPos);
+                    entity.setLinkData(LinkingBookData.deserializeNBT(inHand.getOrCreateTag()));
+                    if (!player.getAbilities().instabuild) inHand.shrink(1);
+                    BookStandBlock.resetState(player, level, clickedPos, clickedBlock, true);
+                }
+
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }
 
         if (player.isCrouching()) {
             if (!level.isClientSide) {
-                BlockPos clickedPos = useOnContext.getClickedPos();
-                BlockState clickedBlock = level.getBlockState(clickedPos);
                 Direction clickedFace = useOnContext.getClickedFace();
-                ItemStack inHand = useOnContext.getItemInHand();
 
                 Vec3 spawnPos = Vec3.atLowerCornerWithOffset(clickedBlock.getCollisionShape(level, clickedPos).isEmpty() ? clickedPos : clickedPos.relative(clickedFace), 0.5, 0 ,0.5);
 

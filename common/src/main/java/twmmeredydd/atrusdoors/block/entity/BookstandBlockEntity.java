@@ -51,6 +51,14 @@ public class BookstandBlockEntity extends BlockEntity implements Clearable {
 
     @Override
     public void clearContent() {
+        this.linkData = null;
+    }
 
+    public void setLinkData(LinkingBookData data) {
+        this.linkData = data;
+    }
+
+    public LinkingBookData getLinkData() {
+        return linkData;
     }
 }
