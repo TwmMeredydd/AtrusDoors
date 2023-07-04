@@ -33,7 +33,7 @@ import twmmeredydd.atrusdoors.block.entity.BookstandBlockEntity;
 import twmmeredydd.atrusdoors.item.AtrusDoorsItems;
 import twmmeredydd.atrusdoors.item.data.LinkingBookData;
 
-public class BookStandBlock extends BaseEntityBlock {
+public class BookstandBlock extends BaseEntityBlock {
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
     public static final BooleanProperty HAS_BOOK = BlockStateProperties.HAS_BOOK;
 
@@ -41,7 +41,7 @@ public class BookStandBlock extends BaseEntityBlock {
     public static final VoxelShape COLUMN = Block.box(7.0,1.0, 7.0, 9.0, 7.0, 9.0);
     public static final VoxelShape HOLDER = Block.box(3.5, 3.5, 3.5, 12.5, 11, 12.5);
 
-    public BookStandBlock(Properties properties) {
+    public BookstandBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(ROTATION, 0)

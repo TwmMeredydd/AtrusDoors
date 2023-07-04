@@ -16,7 +16,7 @@ import java.util.LinkedHashMap;
 public class AtrusDoorsBlocks {
     public static final LinkedHashMap<ResourceLocation, Block> BLOCKS = new LinkedHashMap<>();
 
-    public static final BookStandBlock OAK_BOOKSTAND = create("oak_bookstand", new BookStandBlock(BlockBehaviour.Properties.of(Material.WOOD, Blocks.OAK_PLANKS.defaultMaterialColor()).strength(1).sound(SoundType.WOOD)), true);
+    public static final BookstandBlock OAK_BOOKSTAND = create("oak_bookstand", new BookstandBlock(BlockBehaviour.Properties.of(Material.WOOD, Blocks.OAK_PLANKS.defaultMaterialColor()).strength(1).sound(SoundType.WOOD)), true);
 
     public static <T extends Block> T create(String name, T block, boolean createItem) {
         ResourceLocation id = AtrusDoors.id(name);

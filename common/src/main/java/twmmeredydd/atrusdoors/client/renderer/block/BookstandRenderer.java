@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.world.level.block.state.BlockState;
-import twmmeredydd.atrusdoors.block.BookStandBlock;
+import twmmeredydd.atrusdoors.block.BookstandBlock;
 import twmmeredydd.atrusdoors.block.entity.BookstandBlockEntity;
 import twmmeredydd.atrusdoors.entity.AtrusDoorsEntityTypes;
 import twmmeredydd.atrusdoors.entity.LinkingBookEntity;
@@ -23,7 +23,7 @@ public class BookstandRenderer implements BlockEntityRenderer<BookstandBlockEnti
     public void render(BookstandBlockEntity blockEntity, float f, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, int j) {
         BlockState state = blockEntity.getBlockState();
         poseStack.pushPose();
-        if (state.getValue(BookStandBlock.HAS_BOOK)) {
+        if (state.getValue(BookstandBlock.HAS_BOOK)) {
             LinkingBookEntity entity = AtrusDoorsEntityTypes.LINKING_BOOK.create(blockEntity.getLevel());
 
             entity.lastTickAnimProgress = blockEntity.lastTickAnimProgress;

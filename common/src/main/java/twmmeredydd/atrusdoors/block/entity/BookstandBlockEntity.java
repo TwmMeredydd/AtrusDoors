@@ -8,7 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import twmmeredydd.atrusdoors.block.BookStandBlock;
+import twmmeredydd.atrusdoors.block.BookstandBlock;
 import twmmeredydd.atrusdoors.item.data.LinkingBookData;
 
 import static twmmeredydd.atrusdoors.entity.LinkingBookEntity.ANIM_STEP;
@@ -23,7 +23,7 @@ public class BookstandBlockEntity extends BlockEntity implements Clearable {
     }
 
     public static void animationTick(Level level, BlockPos pos, BlockState state, BookstandBlockEntity blockEntity) {
-        if (!state.getValue(BookStandBlock.HAS_BOOK)) {
+        if (!state.getValue(BookstandBlock.HAS_BOOK)) {
             blockEntity.animProgress = 0;
             blockEntity.lastTickAnimProgress = 0;
         } else {

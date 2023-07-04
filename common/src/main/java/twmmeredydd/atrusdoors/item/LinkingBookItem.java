@@ -15,7 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
-import twmmeredydd.atrusdoors.block.BookStandBlock;
+import twmmeredydd.atrusdoors.block.BookstandBlock;
 import twmmeredydd.atrusdoors.block.entity.BookstandBlockEntity;
 import twmmeredydd.atrusdoors.entity.AtrusDoorsEntityTypes;
 import twmmeredydd.atrusdoors.entity.LinkingBookEntity;
@@ -66,12 +66,12 @@ public class LinkingBookItem extends Item {
         ItemStack inHand = useOnContext.getItemInHand();
 
         if (clickedBlock.is(AtrusDoorsTags.BOOKSTANDS)) {
-            if (!clickedBlock.getValue(BookStandBlock.HAS_BOOK)) {
+            if (!clickedBlock.getValue(BookstandBlock.HAS_BOOK)) {
                 if (!level.isClientSide) {
                     BookstandBlockEntity entity = (BookstandBlockEntity) level.getBlockEntity(clickedPos);
                     entity.setLinkData(LinkingBookData.deserializeNBT(inHand.getOrCreateTag()));
                     if (!player.getAbilities().instabuild) inHand.shrink(1);
-                    BookStandBlock.resetState(player, level, clickedPos, clickedBlock, true);
+                    BookstandBlock.resetState(player, level, clickedPos, clickedBlock, true);
                 }
 
                 return InteractionResult.sidedSuccess(level.isClientSide);
