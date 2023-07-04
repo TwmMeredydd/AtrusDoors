@@ -5,7 +5,9 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import twmmeredydd.atrusdoors.AtrusDoors;
+import twmmeredydd.atrusdoors.block.entity.AtrusDoorsBlockEntityTypes;
 import twmmeredydd.atrusdoors.client.model.entity.LinkingBookModel;
+import twmmeredydd.atrusdoors.client.renderer.block.BookstandRenderer;
 import twmmeredydd.atrusdoors.client.renderer.entity.LinkingBookRenderer;
 import twmmeredydd.atrusdoors.entity.AtrusDoorsEntityTypes;
 
@@ -15,6 +17,8 @@ public class AtrusDoorsForgeClient {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(AtrusDoorsEntityTypes.LINKING_BOOK, LinkingBookRenderer::new);
+
+        event.registerBlockEntityRenderer(AtrusDoorsBlockEntityTypes.BOOKSTAND, BookstandRenderer::new);
     }
 
     @SubscribeEvent
