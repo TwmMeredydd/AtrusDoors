@@ -4,6 +4,6 @@
 		"planks": "minecraft:block/oak_planks",
 		"stripped_log": "minecraft:block/stripped_oak_log",
 		"stripped_log_top": "minecraft:block/stripped_oak_log_top",
-		"log": "minecraft:block/stripped_log"
+		"log": "minecraft:block/oak_log"
 	}
 }
