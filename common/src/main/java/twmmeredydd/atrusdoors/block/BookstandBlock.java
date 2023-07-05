@@ -30,7 +30,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import twmmeredydd.atrusdoors.block.entity.AtrusDoorsBlockEntityTypes;
 import twmmeredydd.atrusdoors.block.entity.BookstandBlockEntity;
-import twmmeredydd.atrusdoors.item.AtrusDoorsItems;
 import twmmeredydd.atrusdoors.item.data.LinkingBookData;
 
 public class BookstandBlock extends BaseEntityBlock {
