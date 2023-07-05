@@ -105,7 +105,7 @@ public class LinkingBookEntity extends Entity {
     @Nullable
     @Override
     public ItemStack getPickResult() {
-        return this.getBook();
+        return this.getBook().copy();
     }
 
     public ItemStack getBook() {
