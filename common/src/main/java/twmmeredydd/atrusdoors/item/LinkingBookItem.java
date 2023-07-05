@@ -69,7 +69,7 @@ public class LinkingBookItem extends Item {
             if (!clickedBlock.getValue(BookstandBlock.HAS_BOOK)) {
                 if (!level.isClientSide) {
                     BookstandBlockEntity entity = (BookstandBlockEntity) level.getBlockEntity(clickedPos);
-                    entity.setLinkData(LinkingBookData.deserializeNBT(inHand.getOrCreateTag()));
+                    entity.setBook(inHand);
                     if (!player.getAbilities().instabuild) inHand.shrink(1);
                     BookstandBlock.resetState(player, level, clickedPos, clickedBlock, true);
                 }
@@ -97,7 +97,7 @@ public class LinkingBookItem extends Item {
     public static void spawnAsEntity(Level level, Vec3 pos, ItemStack stack, float yRot) {
         LinkingBookEntity entity = new LinkingBookEntity(AtrusDoorsEntityTypes.LINKING_BOOK, level);
         entity.setPos(pos);
-        entity.setLinkData(LinkingBookData.deserializeNBT(stack.getOrCreateTag()));
+        entity.setBook(stack);
         entity.setYRot(yRot);
 
         level.gameEvent(entity, GameEvent.ENTITY_PLACE, pos);

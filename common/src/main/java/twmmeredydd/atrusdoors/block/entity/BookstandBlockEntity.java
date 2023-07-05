@@ -4,7 +4,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Clearable;
+import net.minecraft.world.Container;
+import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -14,7 +17,7 @@ import twmmeredydd.atrusdoors.item.data.LinkingBookData;
 import static twmmeredydd.atrusdoors.entity.LinkingBookEntity.ANIM_STEP;
 
 public class BookstandBlockEntity extends BlockEntity implements Clearable {
-    private LinkingBookData linkData;
+    private ItemStack book = ItemStack.EMPTY;
     public float animProgress;
     public float lastTickAnimProgress;
 
@@ -36,29 +39,31 @@ public class BookstandBlockEntity extends BlockEntity implements Clearable {
     @Override
     public void load(CompoundTag compoundTag) {
         super.load(compoundTag);
-        if (compoundTag.contains("LinkDestination")) {
-            this.linkData = LinkingBookData.deserializeNBT(compoundTag);
-        }
+        this.book = compoundTag.contains("Book", 10) ? ItemStack.of(compoundTag.getCompound("Book")) : ItemStack.EMPTY;
     }
 
     @Override
     protected void saveAdditional(CompoundTag compoundTag) {
         super.saveAdditional(compoundTag);
-        if (this.linkData != null) {
-            this.linkData.serializeNBT(compoundTag);
+        if (!this.book.isEmpty()){
+            compoundTag.put("Book", this.book.save(new CompoundTag()));
         }
     }
 
     @Override
     public void clearContent() {
-        this.linkData = null;
-    }
-
-    public void setLinkData(LinkingBookData data) {
-        this.linkData = data;
+        this.book = ItemStack.EMPTY;
     }
 
     public LinkingBookData getLinkData() {
-        return linkData;
+        return LinkingBookData.deserializeNBT(this.book.getOrCreateTag());
+    }
+
+    public void setBook(ItemStack newBook) {
+        this.book = newBook.copy();
+    }
+
+    public ItemStack getBook() {
+        return this.book;
     }
 }

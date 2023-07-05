@@ -89,12 +89,11 @@ public class BookstandBlock extends BaseEntityBlock {
         if (blockState.getValue(HAS_BOOK)) {
             if (player.isCrouching()) {
                 if (!level.isClientSide) {
-                    ItemStack newBook = new ItemStack(AtrusDoorsItems.LINKING_BOOK);
-                    entity.getLinkData().serializeNBT(newBook.getOrCreateTag());
+                    ItemStack newBook = entity.getBook().copy();
                     if (!player.getInventory().add(newBook)) {
                         player.drop(newBook, false);
                     }
-
+                    entity.clearContent();
                     resetState(player, level, blockPos, blockState, false);
                 }
 

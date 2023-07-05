@@ -16,12 +16,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
-import twmmeredydd.atrusdoors.item.AtrusDoorsItems;
 import twmmeredydd.atrusdoors.item.data.LinkingBookData;
 
 public class LinkingBookEntity extends Entity {
-
-    private static final EntityDataAccessor<CompoundTag> LINK_ACCESSOR = SynchedEntityData.defineId(LinkingBookEntity.class, EntityDataSerializers.COMPOUND_TAG);
+    private static final EntityDataAccessor<ItemStack> BOOK_ACCESSOR = SynchedEntityData.defineId(LinkingBookEntity.class, EntityDataSerializers.ITEM_STACK);
     public static final float ANIM_STEP = 0.1F;
 
     public float lastTickAnimProgress;
@@ -38,7 +36,7 @@ public class LinkingBookEntity extends Entity {
         }
 
         if (player.isCrouching()) {
-            ItemStack stack = this.getAsItem();
+            ItemStack stack = this.getBook();
             if (!player.getInventory().add(stack)) {
                 player.drop(stack, false);
             }
@@ -73,27 +71,30 @@ public class LinkingBookEntity extends Entity {
 
     @Override
     protected void defineSynchedData() {
-        this.getEntityData().define(LINK_ACCESSOR, new CompoundTag());
+        this.getEntityData().define(BOOK_ACCESSOR, ItemStack.EMPTY);
     }
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
-        this.setLinkData(LinkingBookData.deserializeNBT(compoundTag));
+        CompoundTag bookTag = compoundTag.getCompound("Book");
+        if (bookTag != null && !bookTag.isEmpty()) {
+            this.setBook(ItemStack.of(bookTag));
+        }
     }
 
     @Override
     protected void addAdditionalSaveData(CompoundTag compoundTag) {
-        if (this.getLinkData() != null) {
-            this.getLinkData().serializeNBT(compoundTag);
+        if (!this.getBook().isEmpty()) {
+            compoundTag.put("Book", this.getBook().save(new CompoundTag()));
         }
     }
 
     public LinkingBookData getLinkData() {
-        return LinkingBookData.deserializeNBT(this.entityData.get(LINK_ACCESSOR));
+        return LinkingBookData.deserializeNBT(this.getBook().getOrCreateTag());
     }
 
-    public void setLinkData(LinkingBookData data) {
-        this.entityData.set(LINK_ACCESSOR, data.serializeNBT(new CompoundTag()));
+    public void setBook(ItemStack stack) {
+        this.entityData.set(BOOK_ACCESSOR, stack.copy());
     }
 
     @Override
@@ -104,12 +105,10 @@ public class LinkingBookEntity extends Entity {
     @Nullable
     @Override
     public ItemStack getPickResult() {
-        return this.getAsItem();
+        return this.getBook();
     }
 
-    public ItemStack getAsItem() {
-        ItemStack stack = new ItemStack(AtrusDoorsItems.LINKING_BOOK);
-        this.getLinkData().serializeNBT(stack.getOrCreateTag());
-        return stack;
+    public ItemStack getBook() {
+        return this.entityData.get(BOOK_ACCESSOR);
     }
 }
