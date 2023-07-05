@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -112,6 +113,23 @@ public class BookstandBlock extends BaseEntityBlock {
         }
 
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
+        if (!blockState.is(blockState2.getBlock())) {
+            if (blockState.getValue(HAS_BOOK)) {
+                if (level.getBlockEntity(blockPos) instanceof BookstandBlockEntity bookstandBlockEntity) {
+                    ItemStack itemStack = bookstandBlockEntity.getBook().copy();
+                    ItemEntity itemEntity = new ItemEntity(level, blockPos.getX() + 0.5, blockPos.getY(), blockPos.getZ() + 0.5, itemStack);
+                    itemEntity.setDefaultPickUpDelay();
+                    level.addFreshEntity(itemEntity);
+                    bookstandBlockEntity.clearContent();
+                }
+            }
+
+            super.onRemove(blockState, level, blockPos, blockState2, bl);
+        }
     }
 
     public static void resetState(Entity entity, Level level, BlockPos blockPos, BlockState state, boolean hasBook) {
