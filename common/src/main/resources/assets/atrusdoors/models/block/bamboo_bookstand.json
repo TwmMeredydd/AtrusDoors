@@ -1,0 +1,9 @@
+{
+	"parent": "atrusdoors:block/bookstand",
+	"textures": {
+		"planks": "minecraft:block/bamboo_planks",
+		"stripped_log": "minecraft:block/stripped_bamboo_block",
+		"stripped_log_top": "minecraft:block/stripped_bamboo_block_top",
+		"log": "minecraft:block/bamboo_block"
+	}
+}

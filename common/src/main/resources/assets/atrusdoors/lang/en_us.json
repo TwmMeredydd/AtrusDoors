@@ -8,6 +8,16 @@
   "item.atrusdoors.linking_book.invalid_link": "This book does not contain a valid link",
 
   "block.atrusdoors.oak_bookstand": "Oak Bookstand",
+  "block.atrusdoors.spruce_bookstand": "Spruce Bookstand",
+  "block.atrusdoors.birch_bookstand": "Birch Bookstand",
+  "block.atrusdoors.acacia_bookstand": "Acacia Bookstand",
+  "block.atrusdoors.cherry_bookstand": "Cherry Bookstand",
+  "block.atrusdoors.jungle_bookstand": "Jungle Bookstand",
+  "block.atrusdoors.dark_oak_bookstand": "Dark Oak Bookstand",
+  "block.atrusdoors.crimson_bookstand": "Crimson Bookstand",
+  "block.atrusdoors.warped_bookstand": "Warped Bookstand",
+  "block.atrusdoors.mangrove_bookstand": "Mangrove Bookstand",
+  "block.atrusdoors.bamboo_bookstand": "Bamboo Bookstand",
 
   "entity.atrusdoors.linking_book": "Linking Book"
 }

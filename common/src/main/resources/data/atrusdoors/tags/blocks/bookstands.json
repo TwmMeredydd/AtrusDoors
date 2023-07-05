@@ -1,6 +1,16 @@
 {
   "replace": false,
   "values": [
-    "atrusdoors:oak_bookstand"
+    "atrusdoors:oak_bookstand",
+    "atrusdoors:spruce_bookstand",
+    "atrusdoors:birch_bookstand",
+    "atrusdoors:acacia_bookstand",
+    "atrusdoors:cherry_bookstand",
+    "atrusdoors:jungle_bookstand",
+    "atrusdoors:dark_oak_bookstand",
+    "atrusdoors:crimson_bookstand",
+    "atrusdoors:warped_bookstand",
+    "atrusdoors:mangrove_bookstand",
+    "atrusdoors:bamboo_bookstand"
   ]
 }
