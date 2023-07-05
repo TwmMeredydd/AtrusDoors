@@ -20,6 +20,9 @@
     ],
     "client": [
       "twmmeredydd.atrusdoors.fabric.client.AtrusDoorsFabricClient"
+    ],
+    "fabric-datagen": [
+      "twmmeredydd.atrusdoors.fabric.datagen.AtrusDoorsDatagen"
     ]
   },
   "mixins": [
