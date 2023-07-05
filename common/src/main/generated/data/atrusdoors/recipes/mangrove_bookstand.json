@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bookstand",
+  "key": {
+    "#": {
+      "item": "minecraft:mangrove_slab"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "#",
+    "/",
+    "#"
+  ],
+  "result": {
+    "count": 2,
+    "item": "atrusdoors:mangrove_bookstand"
+  },
+  "show_notification": true
+}

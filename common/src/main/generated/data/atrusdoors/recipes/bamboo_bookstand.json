@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bookstand",
+  "key": {
+    "#": {
+      "item": "minecraft:bamboo_slab"
+    },
+    "/": {
+      "item": "minecraft:bamboo"
+    }
+  },
+  "pattern": [
+    "#",
+    "/",
+    "#"
+  ],
+  "result": {
+    "count": 2,
+    "item": "atrusdoors:bamboo_bookstand"
+  },
+  "show_notification": true
+}

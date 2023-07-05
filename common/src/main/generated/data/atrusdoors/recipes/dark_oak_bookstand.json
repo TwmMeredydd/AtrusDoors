@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bookstand",
+  "key": {
+    "#": {
+      "item": "minecraft:dark_oak_slab"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "#",
+    "/",
+    "#"
+  ],
+  "result": {
+    "count": 2,
+    "item": "atrusdoors:dark_oak_bookstand"
+  },
+  "show_notification": true
+}
