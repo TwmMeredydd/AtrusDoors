@@ -8,5 +8,6 @@ public class AtrusDoorsDatagen implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
         pack.addProvider(AtrusDoorsRecipeProvider::new);
+        pack.addProvider(AtrusDoorsLootTableProvider::new);
     }
 }
