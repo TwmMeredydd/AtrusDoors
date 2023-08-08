@@ -1,6 +1,6 @@
 package twmmeredydd.atrusdoors.services;
 
-import twmmeredydd.atrusdoors.services.platform.IPlatformImpl;
+import twmmeredydd.atrusdoors.services.impl.IPlatformImpl;
 
 import java.util.ServiceLoader;
 

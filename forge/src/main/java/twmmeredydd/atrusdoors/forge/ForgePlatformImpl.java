@@ -1,7 +1,7 @@
 package twmmeredydd.atrusdoors.forge;
 
 import net.minecraftforge.fml.ModList;
-import twmmeredydd.atrusdoors.services.platform.IPlatformImpl;
+import twmmeredydd.atrusdoors.services.impl.IPlatformImpl;
 
 public class ForgePlatformImpl implements IPlatformImpl {
     @Override

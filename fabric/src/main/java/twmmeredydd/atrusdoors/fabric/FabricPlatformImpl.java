@@ -1,7 +1,7 @@
 package twmmeredydd.atrusdoors.fabric;
 
 import net.fabricmc.loader.api.FabricLoader;
-import twmmeredydd.atrusdoors.services.platform.IPlatformImpl;
+import twmmeredydd.atrusdoors.services.impl.IPlatformImpl;
 
 public class FabricPlatformImpl implements IPlatformImpl {
     @Override

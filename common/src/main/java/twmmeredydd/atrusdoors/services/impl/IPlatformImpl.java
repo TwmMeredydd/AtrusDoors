@@ -1,4 +1,4 @@
-package twmmeredydd.atrusdoors.services.platform;
+package twmmeredydd.atrusdoors.services.impl;
 
 public interface IPlatformImpl {
     String getPlatformName();
