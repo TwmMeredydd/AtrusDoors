@@ -1,6 +1,6 @@
 package twmmeredydd.atrusdoors.services.impl;
 
-public interface IPlatformImpl {
+public interface IPlatform {
     String getPlatformName();
 
     boolean isModLoaded(String id);

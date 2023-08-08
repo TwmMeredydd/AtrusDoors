@@ -5,9 +5,9 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import twmmeredydd.atrusdoors.registry.Register;
-import twmmeredydd.atrusdoors.services.impl.IRegisterProviderImpl;
+import twmmeredydd.atrusdoors.services.impl.IRegisterProvider;
 
-public class ForgeRegisterProviderImpl implements IRegisterProviderImpl {
+public class ForgeRegisterProviderImpl implements IRegisterProvider {
 
     @Override
     public <T> Register<T> create(ResourceKey<? extends Registry<T>> registryKey, String modid) {

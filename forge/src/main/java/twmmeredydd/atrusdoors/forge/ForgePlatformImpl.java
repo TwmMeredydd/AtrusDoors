@@ -1,9 +1,9 @@
 package twmmeredydd.atrusdoors.forge;
 
 import net.minecraftforge.fml.ModList;
-import twmmeredydd.atrusdoors.services.impl.IPlatformImpl;
+import twmmeredydd.atrusdoors.services.impl.IPlatform;
 
-public class ForgePlatformImpl implements IPlatformImpl {
+public class ForgePlatformImpl implements IPlatform {
     @Override
     public String getPlatformName() {
         return "Forge";

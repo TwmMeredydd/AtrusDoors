@@ -5,12 +5,12 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import twmmeredydd.atrusdoors.registry.Register;
-import twmmeredydd.atrusdoors.services.impl.IRegisterProviderImpl;
+import twmmeredydd.atrusdoors.services.impl.IRegisterProvider;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class FabricRegisterProviderImpl implements IRegisterProviderImpl {
+public class FabricRegisterProviderImpl implements IRegisterProvider {
     @Override
     public <T> Register<T> create(ResourceKey<? extends Registry<T>> registryKey, String modid) {
         return new RegisterImpl<>(registryKey, modid);

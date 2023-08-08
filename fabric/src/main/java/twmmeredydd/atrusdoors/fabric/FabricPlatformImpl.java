@@ -1,9 +1,9 @@
 package twmmeredydd.atrusdoors.fabric;
 
 import net.fabricmc.loader.api.FabricLoader;
-import twmmeredydd.atrusdoors.services.impl.IPlatformImpl;
+import twmmeredydd.atrusdoors.services.impl.IPlatform;
 
-public class FabricPlatformImpl implements IPlatformImpl {
+public class FabricPlatformImpl implements IPlatform {
     @Override
     public String getPlatformName() {
         return "Fabric";
