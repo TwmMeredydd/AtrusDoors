@@ -25,8 +25,4 @@ public class AtrusDoorsFabric implements ModInitializer {
         AtrusDoorsEntityTypes.ENTITY_TYPES.registerAll();
         AtrusDoorsBlockEntityTypes.BLOCK_ENTITY_TYPES.registerAll();
     }
-
-    public static <T> void register(Registry<T> registry, Map<ResourceLocation, T> map) {
-        map.forEach((r, t) -> Registry.register(registry, r, t));
-    }
 }
