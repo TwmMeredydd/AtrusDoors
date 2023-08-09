@@ -1,7 +1,6 @@
 package twmmeredydd.atrusdoors.block;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -16,7 +15,6 @@ import twmmeredydd.atrusdoors.item.AtrusDoorsItems;
 import twmmeredydd.atrusdoors.registry.Register;
 import twmmeredydd.atrusdoors.services.Services;
 
-import java.util.LinkedHashMap;
 import java.util.function.Supplier;
 
 public class AtrusDoorsBlocks {

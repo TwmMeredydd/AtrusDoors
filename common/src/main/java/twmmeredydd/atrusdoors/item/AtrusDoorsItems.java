@@ -1,15 +1,12 @@
 package twmmeredydd.atrusdoors.item;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import twmmeredydd.atrusdoors.AtrusDoors;
 import twmmeredydd.atrusdoors.registry.Register;
 import twmmeredydd.atrusdoors.services.Services;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
 public class AtrusDoorsItems {
