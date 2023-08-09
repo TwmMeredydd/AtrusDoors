@@ -41,10 +41,8 @@ public class AtrusDoorsBlocks {
     }
 
     private static Supplier<BookstandBlock> createBookstand(WoodType type, Block planks, boolean is120Exclusive) {
-        return create(type.name() + "_bookstand", () -> {
-            BlockBehaviour.Properties props = BlockBehaviour.Properties.of(Material.WOOD, planks.defaultMaterialColor()).strength(1).sound(SoundType.WOOD);
-            if (is120Exclusive) props.requiredFeatures(FeatureFlags.UPDATE_1_20);
-            return new BookstandBlock(props);
-        }, true);
+        BlockBehaviour.Properties props = BlockBehaviour.Properties.of(Material.WOOD, planks.defaultMaterialColor()).strength(1).sound(SoundType.WOOD);
+        if (is120Exclusive) props.requiredFeatures(FeatureFlags.UPDATE_1_20);
+        return create(type.name() + "_bookstand", () -> new BookstandBlock(props), true);
     }
 }
