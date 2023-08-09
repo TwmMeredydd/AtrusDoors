@@ -16,6 +16,6 @@ public class AtrusDoorsFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(AtrusDoorsEntityTypes.LINKING_BOOK.get(), LinkingBookRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(LinkingBookModel.LAYER, LinkingBookModel::createBodyLayer);
 
-        BlockEntityRendererRegistryImpl.register(AtrusDoorsBlockEntityTypes.BOOKSTAND, BookstandRenderer::new);
+        BlockEntityRendererRegistryImpl.register(AtrusDoorsBlockEntityTypes.BOOKSTAND.get(), BookstandRenderer::new);
     }
 }

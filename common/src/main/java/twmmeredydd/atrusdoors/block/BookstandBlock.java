@@ -79,7 +79,7 @@ public class BookstandBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? createTickerHelper(blockEntityType, AtrusDoorsBlockEntityTypes.BOOKSTAND, BookstandBlockEntity::animationTick) : null;
+        return level.isClientSide ? createTickerHelper(blockEntityType, AtrusDoorsBlockEntityTypes.BOOKSTAND.get(), BookstandBlockEntity::animationTick) : null;
     }
 
     @Override

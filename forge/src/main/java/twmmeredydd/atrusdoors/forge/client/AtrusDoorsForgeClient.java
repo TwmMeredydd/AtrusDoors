@@ -18,7 +18,7 @@ public class AtrusDoorsForgeClient {
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(AtrusDoorsEntityTypes.LINKING_BOOK.get(), LinkingBookRenderer::new);
 
-        event.registerBlockEntityRenderer(AtrusDoorsBlockEntityTypes.BOOKSTAND, BookstandRenderer::new);
+        event.registerBlockEntityRenderer(AtrusDoorsBlockEntityTypes.BOOKSTAND.get(), BookstandRenderer::new);
     }
 
     @SubscribeEvent

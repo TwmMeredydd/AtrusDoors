@@ -28,7 +28,7 @@ public class AtrusDoorsForge {
         AtrusDoorsBlocks.REGISTER.registerAll();
         AtrusDoorsItems.REGISTER.registerAll();
         AtrusDoorsEntityTypes.ENTITY_TYPES.registerAll();
-        register(Registries.BLOCK_ENTITY_TYPE, consumer -> AtrusDoorsBlockEntityTypes.BLOCK_ENTITY_TYPES.forEach(consumer));
+        AtrusDoorsBlockEntityTypes.BLOCK_ENTITY_TYPES.registerAll();
         registerItemGroup();
 
         MinecraftForge.EVENT_BUS.register(this);

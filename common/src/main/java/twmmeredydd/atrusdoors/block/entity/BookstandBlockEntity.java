@@ -20,7 +20,7 @@ public class BookstandBlockEntity extends BlockEntity implements Clearable {
     public float lastTickAnimProgress;
 
     public BookstandBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(AtrusDoorsBlockEntityTypes.BOOKSTAND, blockPos, blockState);
+        super(AtrusDoorsBlockEntityTypes.BOOKSTAND.get(), blockPos, blockState);
     }
 
     public static void animationTick(Level level, BlockPos pos, BlockState state, BookstandBlockEntity blockEntity) {
