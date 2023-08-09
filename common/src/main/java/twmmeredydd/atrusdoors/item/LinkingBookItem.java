@@ -95,7 +95,7 @@ public class LinkingBookItem extends Item {
     }
 
     public static void spawnAsEntity(Level level, Vec3 pos, ItemStack stack, float yRot) {
-        LinkingBookEntity entity = new LinkingBookEntity(AtrusDoorsEntityTypes.LINKING_BOOK, level);
+        LinkingBookEntity entity = new LinkingBookEntity(AtrusDoorsEntityTypes.LINKING_BOOK.get(), level);
         entity.setPos(pos);
         entity.setBook(stack);
         entity.setYRot(yRot);

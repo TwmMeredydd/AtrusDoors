@@ -27,7 +27,7 @@ public class AtrusDoorsForge {
         // IDK why, but replacing the lambda with a map::forEach reference causes a frozen registry error
         AtrusDoorsBlocks.REGISTER.registerAll();
         AtrusDoorsItems.REGISTER.registerAll();
-        register(Registries.ENTITY_TYPE, consumer -> AtrusDoorsEntityTypes.ENTITY_TYPES.forEach(consumer));
+        AtrusDoorsEntityTypes.ENTITY_TYPES.registerAll();
         register(Registries.BLOCK_ENTITY_TYPE, consumer -> AtrusDoorsBlockEntityTypes.BLOCK_ENTITY_TYPES.forEach(consumer));
         registerItemGroup();
 

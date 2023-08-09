@@ -33,7 +33,7 @@ public class BookstandRenderer implements BlockEntityRenderer<BookstandBlockEnti
         this.blockRenderer.getModelRenderer().renderModel(poseStack.last(), multiBufferSource.getBuffer(Sheets.solidBlockSheet()), state, this.blockRenderer.getBlockModel(state), 1, 1, 1, i, OverlayTexture.NO_OVERLAY);
 
         if (state.getValue(BookstandBlock.HAS_BOOK)) {
-            LinkingBookEntity entity = AtrusDoorsEntityTypes.LINKING_BOOK.create(blockEntity.getLevel());
+            LinkingBookEntity entity = AtrusDoorsEntityTypes.LINKING_BOOK.get().create(blockEntity.getLevel());
 
             entity.lastTickAnimProgress = blockEntity.lastTickAnimProgress;
             entity.animProgress = blockEntity.animProgress;
