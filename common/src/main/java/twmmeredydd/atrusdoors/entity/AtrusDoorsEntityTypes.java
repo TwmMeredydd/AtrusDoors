@@ -11,7 +11,7 @@ import twmmeredydd.atrusdoors.services.Services;
 import java.util.function.Supplier;
 
 public class AtrusDoorsEntityTypes {
-    public static final Register<EntityType<?>> ENTITY_TYPES = Services.REGISTER_PROVIDER.create(Registries.ENTITY_TYPE, AtrusDoors.MOD_ID);
+    public static final Register<EntityType<?>> ENTITY_TYPES = Services.PLATFORM.createRegister(Registries.ENTITY_TYPE);
 
     public static final Supplier<EntityType<LinkingBookEntity>> LINKING_BOOK = create("linking_book",
             EntityType.Builder.of(LinkingBookEntity::new, MobCategory.MISC)

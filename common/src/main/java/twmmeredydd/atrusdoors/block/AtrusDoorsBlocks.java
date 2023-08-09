@@ -18,7 +18,7 @@ import twmmeredydd.atrusdoors.services.Services;
 import java.util.function.Supplier;
 
 public class AtrusDoorsBlocks {
-    public static final Register<Block> REGISTER = Services.REGISTER_PROVIDER.create(Registries.BLOCK, AtrusDoors.MOD_ID);
+    public static final Register<Block> REGISTER = Services.PLATFORM.createRegister(Registries.BLOCK);
 
     public static final Supplier<BookstandBlock> OAK_BOOKSTAND = createBookstand(WoodType.OAK, Blocks.OAK_PLANKS, false);
     public static final Supplier<BookstandBlock> SPRUCE_BOOKSTAND = createBookstand(WoodType.SPRUCE, Blocks.SPRUCE_PLANKS, false);

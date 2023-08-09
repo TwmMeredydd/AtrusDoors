@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.function.Supplier;
 
 public class AtrusDoorsItems {
-    public static final Register<Item> REGISTER = Services.REGISTER_PROVIDER.create(Registries.ITEM, AtrusDoors.MOD_ID);
+    public static final Register<Item> REGISTER = Services.PLATFORM.createRegister(Registries.ITEM);
     public static final ArrayList<Supplier<? extends Item>> TAB_CONTENTS = new ArrayList<>();
 
     public static final Supplier<Item> LINKING_PANEL = create("linking_panel", () -> new Item(new Item.Properties()), true);

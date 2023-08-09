@@ -7,7 +7,6 @@ import java.util.ServiceLoader;
 
 public class Services {
     public static final IPlatform PLATFORM = load(IPlatform.class);
-    public static final IRegisterProvider REGISTER_PROVIDER = load(IRegisterProvider.class);
 
     public static <T> T load(Class<T> clazz) {
         final T platform = ServiceLoader.load(clazz)
