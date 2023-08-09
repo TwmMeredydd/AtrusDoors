@@ -20,7 +20,7 @@ public class FabricRegisterProviderImpl implements IRegisterProvider {
     private class RegisterImpl<T> extends Register<T> {
         private Registry<T> registry;
         private final String modid;
-        private final Map<ResourceLocation, T> contents;
+        private final Map<ResourceLocation, Supplier<? extends T>> contents;
 
         protected RegisterImpl(ResourceKey<? extends Registry<T>> registryKey, String modid) {
             this.registry = (Registry<T>) BuiltInRegistries.REGISTRY.get(registryKey.location());
@@ -31,15 +31,16 @@ public class FabricRegisterProviderImpl implements IRegisterProvider {
 
         @Override
         public <I extends T> Supplier<I> register(String name, Supplier<I> entry) {
-            if (contents.putIfAbsent(new ResourceLocation(modid, name), entry.get()) != null) {
+            I object = entry.get();
+            if (contents.putIfAbsent(new ResourceLocation(modid, name), () -> object) != null) {
                 throw new IllegalArgumentException("Duplicate registration " + name);
             }
-            return entry;
+            return () -> object;
         }
 
         @Override
         public void registerAll() {
-            contents.forEach((resourceLocation, t) -> Registry.register(registry, resourceLocation, t));
+            contents.forEach((resourceLocation, t) -> Registry.register(registry, resourceLocation, t.get()));
         }
     }
 }
