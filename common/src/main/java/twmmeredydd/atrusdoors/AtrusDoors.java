@@ -4,10 +4,20 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import twmmeredydd.atrusdoors.block.AtrusDoorsBlocks;
+import twmmeredydd.atrusdoors.block.entity.AtrusDoorsBlockEntityTypes;
+import twmmeredydd.atrusdoors.entity.AtrusDoorsEntityTypes;
 import twmmeredydd.atrusdoors.item.AtrusDoorsItems;
 
 public class AtrusDoors {
     public static final String MOD_ID = "atrusdoors";
+
+    public static void init() {
+        AtrusDoorsBlocks.REGISTER.registerAll();
+        AtrusDoorsItems.REGISTER.registerAll();
+        AtrusDoorsEntityTypes.ENTITY_TYPES.registerAll();
+        AtrusDoorsBlockEntityTypes.BLOCK_ENTITY_TYPES.registerAll();
+    }
 
     public static ResourceLocation id(String path) {
         return new ResourceLocation(MOD_ID, path);
