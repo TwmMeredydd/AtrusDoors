@@ -9,6 +9,7 @@ import twmmeredydd.atrusdoors.services.impl.IRegisterProvider;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public class FabricRegisterProviderImpl implements IRegisterProvider {
     @Override
@@ -29,8 +30,8 @@ public class FabricRegisterProviderImpl implements IRegisterProvider {
         }
 
         @Override
-        public <I extends T> I register(String name, I entry) {
-            if (contents.putIfAbsent(new ResourceLocation(modid, name), entry) != null) {
+        public <I extends T> Supplier<I> register(String name, Supplier<I> entry) {
+            if (contents.putIfAbsent(new ResourceLocation(modid, name), entry.get()) != null) {
                 throw new IllegalArgumentException("Duplicate registration " + name);
             }
             return entry;

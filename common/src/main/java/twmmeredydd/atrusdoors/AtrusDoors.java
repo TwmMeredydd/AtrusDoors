@@ -16,8 +16,8 @@ public class AtrusDoors {
     public static <T extends CreativeModeTab.Builder> CreativeModeTab.Builder buildItemGroup(T builder) {
         return builder
                 .title(Component.translatable("itemGroup." + MOD_ID + ".main"))
-                .icon(() -> new ItemStack(AtrusDoorsItems.LINKING_BOOK))
-                .displayItems((itemDisplayParameters, output) -> AtrusDoorsItems.TAB_CONTENTS.forEach(output::accept));
+                .icon(() -> new ItemStack(AtrusDoorsItems.LINKING_BOOK.get()))
+                .displayItems((itemDisplayParameters, output) -> AtrusDoorsItems.TAB_CONTENTS.forEach(item -> output.accept(item.get())));
     }
 
 }

@@ -20,8 +20,8 @@ public class AtrusDoorsFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        register(BuiltInRegistries.BLOCK, AtrusDoorsBlocks.BLOCKS);
-        register(BuiltInRegistries.ITEM, AtrusDoorsItems.ITEMS);
+        AtrusDoorsBlocks.REGISTER.registerAll();
+        AtrusDoorsItems.REGISTER.registerAll();
         register(BuiltInRegistries.ENTITY_TYPE, AtrusDoorsEntityTypes.ENTITY_TYPES);
         register(BuiltInRegistries.BLOCK_ENTITY_TYPE, AtrusDoorsBlockEntityTypes.BLOCK_ENTITY_TYPES);
     }

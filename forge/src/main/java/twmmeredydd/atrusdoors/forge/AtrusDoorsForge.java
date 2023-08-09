@@ -4,6 +4,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -24,11 +25,13 @@ public class AtrusDoorsForge {
 
     public AtrusDoorsForge() {
         // IDK why, but replacing the lambda with a map::forEach reference causes a frozen registry error
-        register(Registries.BLOCK, consumer -> AtrusDoorsBlocks.BLOCKS.forEach(consumer));
-        register(Registries.ITEM, consumer -> AtrusDoorsItems.ITEMS.forEach(consumer));
+        AtrusDoorsBlocks.REGISTER.registerAll();
+        AtrusDoorsItems.REGISTER.registerAll();
         register(Registries.ENTITY_TYPE, consumer -> AtrusDoorsEntityTypes.ENTITY_TYPES.forEach(consumer));
         register(Registries.BLOCK_ENTITY_TYPE, consumer -> AtrusDoorsBlockEntityTypes.BLOCK_ENTITY_TYPES.forEach(consumer));
         registerItemGroup();
+
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     public static IEventBus getBus() {

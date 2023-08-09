@@ -1,28 +1,30 @@
 package twmmeredydd.atrusdoors.item;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import twmmeredydd.atrusdoors.AtrusDoors;
+import twmmeredydd.atrusdoors.registry.Register;
+import twmmeredydd.atrusdoors.services.Services;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.function.BiConsumer;
+import java.util.function.Supplier;
 
 public class AtrusDoorsItems {
-    public static final LinkedHashMap<ResourceLocation, Item> ITEMS = new LinkedHashMap<>();
-    public static final ArrayList<Item> TAB_CONTENTS = new ArrayList<>();
+    public static final Register<Item> REGISTER = Services.REGISTER_PROVIDER.create(Registries.ITEM, AtrusDoors.MOD_ID);
+    public static final ArrayList<Supplier<? extends Item>> TAB_CONTENTS = new ArrayList<>();
 
-    public static final Item LINKING_PANEL = create("linking_panel", new Item(new Item.Properties()), true);
-    public static final UnlinkedLinkingBookItem UNLINKED_LINKING_BOOK = create("unlinked_linking_book", new UnlinkedLinkingBookItem(new Item.Properties()), true);
-    public static final LinkingBookItem LINKING_BOOK = create("linking_book", new LinkingBookItem(new Item.Properties().stacksTo(1)), false);
+    public static final Supplier<Item> LINKING_PANEL = create("linking_panel", () -> new Item(new Item.Properties()), true);
+    public static final Supplier<UnlinkedLinkingBookItem> UNLINKED_LINKING_BOOK = create("unlinked_linking_book", () -> new UnlinkedLinkingBookItem(new Item.Properties()), true);
+    public static final Supplier<LinkingBookItem> LINKING_BOOK = create("linking_book", () -> new LinkingBookItem(new Item.Properties().stacksTo(1)), false);
 
-    public static <T extends Item> T create(String name, T item, boolean inTab) {
-        if (ITEMS.put(AtrusDoors.id(name), item) != null) {
-            throw new IllegalArgumentException("Attempted duplicate registry for item " + AtrusDoors.id(name));
-        }
+    public static <T extends Item> Supplier<T> create(String name, Supplier<T> item, boolean inTab) {
+        Supplier<T> object = REGISTER.register(name, item);
         if (inTab) {
-            TAB_CONTENTS.add(item);
+            TAB_CONTENTS.add(object);
         }
-        return item;
+        return object;
     }
 }

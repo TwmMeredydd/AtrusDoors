@@ -11,7 +11,7 @@ import java.util.LinkedHashMap;
 public class AtrusDoorsBlockEntityTypes {
     public static final LinkedHashMap<ResourceLocation, BlockEntityType<?>> BLOCK_ENTITY_TYPES = new LinkedHashMap<>();
 
-    public static final BlockEntityType<BookstandBlockEntity> BOOKSTAND = create("bookstand", BlockEntityType.Builder.of(BookstandBlockEntity::new, AtrusDoorsBlocks.OAK_BOOKSTAND, AtrusDoorsBlocks.SPRUCE_BOOKSTAND, AtrusDoorsBlocks.BIRCH_BOOKSTAND, AtrusDoorsBlocks.ACACIA_BOOKSTAND, AtrusDoorsBlocks.CHERRY_BOOKSTAND, AtrusDoorsBlocks.JUNGLE_BOOKSTAND, AtrusDoorsBlocks.DARK_OAK_BOOKSTAND, AtrusDoorsBlocks.CRIMSON_BOOKSTAND, AtrusDoorsBlocks.WARPED_BOOKSTAND, AtrusDoorsBlocks.MANGROVE_BOOKSTAND, AtrusDoorsBlocks.BAMBOO_BOOKSTAND));
+    public static final BlockEntityType<BookstandBlockEntity> BOOKSTAND = create("bookstand", BlockEntityType.Builder.of(BookstandBlockEntity::new, AtrusDoorsBlocks.OAK_BOOKSTAND.get(), AtrusDoorsBlocks.SPRUCE_BOOKSTAND.get(), AtrusDoorsBlocks.BIRCH_BOOKSTAND.get(), AtrusDoorsBlocks.ACACIA_BOOKSTAND.get(), AtrusDoorsBlocks.CHERRY_BOOKSTAND.get(), AtrusDoorsBlocks.JUNGLE_BOOKSTAND.get(), AtrusDoorsBlocks.DARK_OAK_BOOKSTAND.get(), AtrusDoorsBlocks.CRIMSON_BOOKSTAND.get(), AtrusDoorsBlocks.WARPED_BOOKSTAND.get(), AtrusDoorsBlocks.MANGROVE_BOOKSTAND.get(), AtrusDoorsBlocks.BAMBOO_BOOKSTAND.get()));
 
     public static <T extends BlockEntity> BlockEntityType<T> create(String name, BlockEntityType.Builder<T> builder) {
         ResourceLocation id = AtrusDoors.id(name);

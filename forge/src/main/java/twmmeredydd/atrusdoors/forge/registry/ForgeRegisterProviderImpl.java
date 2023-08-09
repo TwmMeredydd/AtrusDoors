@@ -7,6 +7,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import twmmeredydd.atrusdoors.registry.Register;
 import twmmeredydd.atrusdoors.services.impl.IRegisterProvider;
 
+import java.util.function.Supplier;
+
 public class ForgeRegisterProviderImpl implements IRegisterProvider {
 
     @Override
@@ -22,9 +24,8 @@ public class ForgeRegisterProviderImpl implements IRegisterProvider {
         }
 
         @Override
-        public <I extends T> I register(String name, I entry) {
-            contents.register(name, () -> entry);
-            return entry;
+        public <I extends T> Supplier<I> register(String name, Supplier<I> entry) {
+            return contents.register(name, entry);
         }
 
         @Override
